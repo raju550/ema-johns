@@ -10,15 +10,18 @@ import {
 import fakeData from "./../../fakeData/index";
 import ReviewItems from "./../ReviewItems/ReviewItems";
 import Cart from "./../Cart/Cart";
+import { useHistory } from "react-router-dom";
 
 const Review = () => {
   const [count, setCount] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const history = useHistory();
 
-  const handlePlaceOrder = () => {
-    setCount([]);
-    setOrderPlaced(true);
-    processOrder();
+  const handleProceedCheckout = () => {
+    history.push("/shipment");
+    // setCount([]);
+    // setOrderPlaced(true);
+    // processOrder();
   };
 
   const handelRemoveProduct = (props) => {
@@ -58,8 +61,8 @@ const Review = () => {
       </div>
       <div className="card-container">
         <Cart cart={count}>
-          <button onClick={handlePlaceOrder} className="remove-button">
-            Place Order
+          <button onClick={handleProceedCheckout} className="remove-button">
+            Proceed Checkout
           </button>
         </Cart>
       </div>
